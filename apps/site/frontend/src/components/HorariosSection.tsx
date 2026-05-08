@@ -21,7 +21,6 @@ const horarios = [
   { modalidade: "Muay Thai / Kickboxing", dias: "Seg, Qua e Sex", hora: "20h", professor: "Prof. Rafael Vinícius", cor: "#FFD700" },
   // Boxe
   { modalidade: "Boxe", dias: "Ter e Qui", hora: "7h", professor: "Prof. Carlston Harris", cor: "#FF3333" },
-  { modalidade: "Boxe", dias: "Ter e Qui", hora: "12h", professor: "Prof. Cris Rick · turma especial R$200", cor: "#FF3333" },
   { modalidade: "Boxe", dias: "Seg, Qua e Sex", hora: "19h", professor: "Prof. Cris Rick", cor: "#FF3333" },
   { modalidade: "Boxe", dias: "Ter e Qui", hora: "19h", professor: "Prof. Jefferson Todinho", cor: "#FF3333" },
   // Jiu-Jitsu
