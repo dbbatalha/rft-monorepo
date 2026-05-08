@@ -15,6 +15,18 @@
 
   <body>
     <div id="root"></div>
+    <script>
+      // SPA deep-link restore (pareado com 404.html de GH Pages)
+      (function () {
+        var saved = sessionStorage.getItem("spa-redirect-path");
+        if (saved) {
+          sessionStorage.removeItem("spa-redirect-path");
+          if (saved !== location.pathname + location.search + location.hash) {
+            history.replaceState(null, "", saved);
+          }
+        }
+      })();
+    </script>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 
