@@ -244,7 +244,7 @@ export default function PlanosSection() {
             </h3>
             <div className="h-px flex-1 bg-yellow-400/20" />
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {pacotesFechados.map((p, i) => {
               const isYellow = i % 2 === 0;
               const accent = isYellow ? "#FFD700" : "#FF3333";
@@ -254,13 +254,13 @@ export default function PlanosSection() {
                   initial={{ opacity: 0, y: 30 }}
                   animate={inView ? { opacity: 1, y: 0 } : {}}
                   transition={{ duration: 0.5, delay: 0.5 + i * 0.1 }}
-                  className="relative p-6 flex flex-col overflow-hidden group"
+                  className="relative p-8 flex flex-col overflow-hidden group"
                   style={{
                     background: isYellow
                       ? "linear-gradient(135deg, #1a1500 0%, #000 100%)"
                       : "linear-gradient(135deg, #1a0000 0%, #000 100%)",
                     border: `2px solid ${accent}`,
-                    boxShadow: `0 0 30px ${accent}20`,
+                    boxShadow: `0 0 30px ${accent}30`,
                   }}
                 >
                   <div className="flex items-center gap-3 mb-4">
