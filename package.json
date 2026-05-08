@@ -11,6 +11,7 @@
     "build":              "pnpm -r build",
     "build:site":         "pnpm --filter @rft/site-frontend build",
     "build:analytics":    "pnpm --filter @rft/analytics-frontend build && pnpm --filter @rft/analytics-backend build",
+    "build:prod":         "./build-prod.sh",
     "typecheck":          "pnpm -r typecheck",
     "lint":               "pnpm -r lint --if-present",
     "clean":              "pnpm -r exec rm -rf node_modules dist .next .turbo && rm -rf node_modules"
