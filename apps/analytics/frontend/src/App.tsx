@@ -56,7 +56,7 @@ export default function App() {
       <TooltipProvider>
         <Toaster />
         <PageTitle />
-        <WouterRouter base="/analytics">
+        <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, "") || "/analytics"}>
           <Routes />
         </WouterRouter>
       </TooltipProvider>

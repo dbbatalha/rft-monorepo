@@ -112,7 +112,7 @@ export default function ScoutingSection() {
           className="text-center"
         >
           <a
-            href="/analytics/"
+            href={`${import.meta.env.BASE_URL}analytics/`}
             className="inline-flex items-center gap-3 px-8 py-4 font-heading uppercase tracking-widest text-black transition-all hover:gap-5"
             style={{
               background: "#FFD700",

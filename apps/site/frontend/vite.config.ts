@@ -5,10 +5,13 @@ import { defineConfig } from "vite";
 
 const ANALYTICS_FE_PORT = Number(process.env.ANALYTICS_FE_PORT ?? 8011);
 const ANALYTICS_BE_PORT = Number(process.env.ANALYTICS_BE_PORT ?? 8010);
+// Em GitHub Pages o site fica sob /rft-monorepo/. Em Cloudflare ou domínio
+// próprio fica sob /. Controlado via env var SITE_BASE.
+const SITE_BASE = process.env.SITE_BASE ?? "/";
 
 export default defineConfig({
   plugins: [react(), tailwindcss()],
-  base: "/",
+  base: SITE_BASE,
   resolve: {
     alias: {
       "@":           path.resolve(import.meta.dirname, "src"),

@@ -1,0 +1,76 @@
+name: Deploy GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build (GitHub Pages base path)
+        env:
+          # Repo path no GitHub Pages: dbbatalha.github.io/rft-monorepo/
+          SITE_BASE: /rft-monorepo/
+        run: |
+          pnpm --filter @rft/site-frontend build
+          pnpm --filter @rft/analytics-frontend build
+
+          # Remove WASM gerado pelo bundler — usamos CDN em runtime
+          rm -f apps/analytics/frontend/dist/assets/ort-wasm-*.wasm
+
+          # Monta dist/ unificado
+          rm -rf dist
+          mkdir -p dist
+          cp -R apps/site/frontend/dist/. dist/
+          mkdir -p dist/analytics
+          cp -R apps/analytics/frontend/dist/. dist/analytics/
+
+          # GitHub Pages SPA fallback: copia index.html como 404.html
+          # (GitHub Pages serve 404.html quando o path não bate, e nosso
+          # SPA cuida do resto via JavaScript)
+          cp dist/index.html dist/404.html
+
+          # Bypass Jekyll (evita o GH Pages tentar processar como Jekyll)
+          touch dist/.nojekyll
+
+          du -sh dist
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4

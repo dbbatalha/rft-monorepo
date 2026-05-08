@@ -5,10 +5,16 @@ import { defineConfig } from "vite";
 
 const ANALYTICS_FE_PORT = Number(process.env.ANALYTICS_FE_PORT ?? 8011);
 const ANALYTICS_BE_PORT = Number(process.env.ANALYTICS_BE_PORT ?? 8010);
+// Em GitHub Pages, o analytics fica em /rft-monorepo/analytics/.
+// Em Cloudflare ou domínio próprio, fica em /analytics/.
+// O SITE_BASE controla o prefixo do site (ex.: /rft-monorepo/);
+// concatenamos com /analytics/ pra obter o base do analytics.
+const SITE_BASE = process.env.SITE_BASE ?? "/";
+const ANALYTICS_BASE = (SITE_BASE.replace(/\/$/, "") + "/analytics/").replace(/^\/\//, "/");
 
 export default defineConfig({
   plugins: [react(), tailwindcss()],
-  base: "/analytics/",
+  base: ANALYTICS_BASE,
   resolve: {
     alias: {
       "@":            path.resolve(import.meta.dirname, "src"),
