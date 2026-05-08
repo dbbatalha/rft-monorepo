@@ -5,11 +5,6 @@ import { asset } from "@/lib/url";
 
 const fotos = [
   {
-    src: asset("/imagens/mma/47a9e710-44c1-11f1-93cd-1bbb4d4c542c.jpg"),
-    alt: "Equipe RFT - Treino Completo",
-    categoria: "Equipe",
-  },
-  {
     src: asset("/imagens/mma/mma_0.jpeg"),
     alt: "Treino de MMA na RFT",
     categoria: "MMA",
