@@ -22,7 +22,11 @@
  */
 import { useQuery } from "@tanstack/react-query";
 
-const BASE = "/data";
+// BASE_URL pode ser:
+//   - "/analytics/"              (Cloudflare/domínio próprio)
+//   - "/rft-monorepo/analytics/" (GitHub Pages)
+// Os JSONs ficam em <BASE_URL>data/.
+const BASE = `${import.meta.env.BASE_URL}data`;
 
 async function fetchJson<T>(path: string): Promise<T> {
   const res = await fetch(`${BASE}${path}`, { cache: "default" });
