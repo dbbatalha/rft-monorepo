@@ -1,7 +1,7 @@
 import { MapPin, Phone, Instagram, MessageCircle } from "lucide-react";
 import { asset } from "@/lib/url";
 
-const modalidades = ["MMA Profissional", "Luta Livre", "Muay Thai / Kickboxing", "Boxe", "Jiu-Jitsu", "Jiu-Jitsu Kids"];
+const modalidades = ["MMA Profissional", "Luta Livre / NO GI", "Muay Thai / Kickboxing", "Boxe", "Jiu-Jitsu", "Jiu-Jitsu Kids"];
 
 export default function Footer() {
   const scrollTo = (id: string) => {

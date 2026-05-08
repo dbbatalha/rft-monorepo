@@ -10,7 +10,7 @@ const modalidades = [
   "Muay Thai / Kickboxing",
   "Jiu-Jitsu",
   "Jiu-Jitsu Kids",
-  "Luta Livre",
+  "Luta Livre / NO GI",
   "Não sei ainda",
 ];
 

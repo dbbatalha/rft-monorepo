@@ -16,8 +16,8 @@ const fotos = [
   },
   {
     src: asset("/imagens/luta-livre/turma_lle.jpeg"),
-    alt: "Turma de Luta Livre — Prof. Márcio Cromado",
-    categoria: "Luta Livre",
+    alt: "Turma de Luta Livre / NO GI — Prof. Márcio Cromado",
+    categoria: "Luta Livre / NO GI",
   },
   {
     src: asset("/imagens/jiu-jitsu/turma_bruno.jpeg"),

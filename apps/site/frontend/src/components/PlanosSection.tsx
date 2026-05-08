@@ -38,8 +38,8 @@ const pacotesFechados: Pacote[] = [
 ];
 
 const pacotesCombinados: Pacote[] = [
-  { id: "p1", nome: "Pacote 1", badges: ["Luta Livre — Livre", "Strike 2×/sem"], valor: "R$ 550" },
-  { id: "p2", nome: "Pacote 2", badges: ["Luta Livre — Livre", "Strike 3×/sem"], valor: "R$ 585" },
+  { id: "p1", nome: "Pacote 1", badges: ["Luta Livre / NO GI — Livre", "Strike 2×/sem"], valor: "R$ 550" },
+  { id: "p2", nome: "Pacote 2", badges: ["Luta Livre / NO GI — Livre", "Strike 3×/sem"], valor: "R$ 585" },
   { id: "p3", nome: "Pacote 3", badges: ["Strike 2×/sem", "JJ 3×/sem"], valor: "R$ 485" },
   { id: "p4", nome: "Pacote 4", badges: ["Strike 2×/sem", "JJ 2×/sem"], valor: "R$ 460" },
   { id: "p5", nome: "Pacote 5", badges: ["Strike 3×/sem", "JJ 3×/sem"], valor: "R$ 515" },
@@ -55,7 +55,7 @@ function whatsappLink(pacote: Pacote) {
 
 const tabela = [
   {
-    grupo: "Luta Livre",
+    grupo: "Luta Livre / NO GI",
     cor: "#FFD700",
     linhas: [
       { plano: "Valor único — todos os horários", preco: "R$ 375" },

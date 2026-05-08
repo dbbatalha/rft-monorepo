@@ -18,7 +18,7 @@ const modalidades = [
   },
   {
     id: "luta-livre",
-    nome: "Luta Livre",
+    nome: "Luta Livre / NO GI",
     descricao: "A luta livre brasileira. Técnicas de wrestling, quedas e finalizações sem kimono.",
     cor: "#FF3333",
     flyer: asset("/imagens/flyer/47b4bc80-44c1-11f1-93cd-1bbb4d4c542c.jpg"),

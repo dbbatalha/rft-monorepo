@@ -39,10 +39,10 @@ const academiaFeatures = [
 const headCoaches = [
   {
     nome: "Prof. Márcio Cromado",
-    titulo: "Head Coach de MMA & Luta Livre",
+    titulo: "Head Coach de MMA & Luta Livre / NO GI",
     descricao:
       "Referência nacional no MMA, Márcio Cromado é o principal coach da RFT. Com vasta experiência em competições de alto nível, formou campeões e guia atletas profissionais rumo ao topo.",
-    conquistas: ["Head Coach MMA", "Luta Livre Expert", "Formador de Campeões"],
+    conquistas: ["Head Coach MMA", "Luta Livre / NO GI Expert", "Formador de Campeões"],
     cor: "#FFD700",
     foto: BOXING_PHOTO,
   },
@@ -148,7 +148,7 @@ export default function ProfessoresSection() {
           </div>
         </motion.div>
 
-        {/* Head Coaches — Cromado (MMA / Luta Livre) + Bruno Grillu (Jiu-Jitsu) */}
+        {/* Head Coaches — Cromado (MMA / Luta Livre / NO GI) + Bruno Grillu (Jiu-Jitsu) */}
         <div className="space-y-8 mb-12">
           {headCoaches.map((coach, idx) => (
             <motion.div

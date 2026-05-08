@@ -10,10 +10,10 @@ const horarios = [
   { modalidade: "MMA Profissional", dias: "Ter e Qui", hora: "9h30", professor: "Prof. Rafael Vinícius", cor: "#FFD700" },
   { modalidade: "MMA Profissional", dias: "Ter e Qui", hora: "10h30", professor: "Prof. Márcio Cromado", cor: "#FFD700" },
   { modalidade: "MMA Profissional", dias: "Quartas", hora: "9h", professor: "Prof. Rafael Vinícius", cor: "#FFD700" },
-  // Luta Livre
-  { modalidade: "Luta Livre", dias: "Seg, Qua e Sex", hora: "10h", professor: "Prof. Márcio Cromado", cor: "#FF3333" },
-  { modalidade: "Luta Livre", dias: "Seg, Qua e Sex", hora: "19h", professor: "Prof. Márcio Cromado", cor: "#FF3333" },
-  { modalidade: "Luta Livre", dias: "Ter e Qui", hora: "17h", professor: "Prof. Márcio Cromado", cor: "#FF3333" },
+  // Luta Livre / NO GI
+  { modalidade: "Luta Livre / NO GI", dias: "Seg, Qua e Sex", hora: "10h", professor: "Prof. Márcio Cromado", cor: "#FF3333" },
+  { modalidade: "Luta Livre / NO GI", dias: "Seg, Qua e Sex", hora: "19h", professor: "Prof. Márcio Cromado", cor: "#FF3333" },
+  { modalidade: "Luta Livre / NO GI", dias: "Ter e Qui", hora: "17h", professor: "Prof. Márcio Cromado", cor: "#FF3333" },
   // Muay Thai / Kickboxing
   { modalidade: "Muay Thai / Kickboxing", dias: "Seg, Qua e Sex", hora: "7h", professor: "Prof. José Vitor Lobão", cor: "#FFD700" },
   { modalidade: "Muay Thai / Kickboxing", dias: "Ter e Qui", hora: "12h", professor: "Prof. Cris Rick · turma especial R$200", cor: "#FFD700" },
@@ -34,7 +34,7 @@ const horarios = [
   { modalidade: "Jiu-Jitsu Kids", dias: "Ter e Qui", hora: "18h", professor: "Prof. Andressa Romero", cor: "#FFD700" },
 ];
 
-const modalidades = [TODAS, "MMA Profissional", "Luta Livre", "Muay Thai / Kickboxing", "Boxe", "Jiu-Jitsu", "Jiu-Jitsu Kids"];
+const modalidades = [TODAS, "MMA Profissional", "Luta Livre / NO GI", "Muay Thai / Kickboxing", "Boxe", "Jiu-Jitsu", "Jiu-Jitsu Kids"];
 
 export default function HorariosSection() {
   const [filtro, setFiltro] = useState(TODAS);
