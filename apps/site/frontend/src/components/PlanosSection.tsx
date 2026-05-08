@@ -28,13 +28,6 @@ const pacotesFechados: Pacote[] = [
     valor: "R$ 500",
     destaque: "Boxe + Muay Thai liberados",
   },
-  {
-    id: "grappling-strike",
-    nome: "Grappling + Strike",
-    badges: ["JJ Livre", "LL Livre", "Boxe Livre", "Muay Thai Livre"],
-    valor: "R$ 650",
-    destaque: "Pacote completo — todas as modalidades liberadas",
-  },
 ];
 
 const pacotesCombinados: Pacote[] = [
@@ -92,7 +85,7 @@ const destaques = [
   {
     icon: Crown,
     titulo: "Acesso Total RFT",
-    valor: "R$ 600",
+    valor: "R$ 650",
     desc: "Todas as modalidades, todos os horários, plano livre completo.",
     cor: "#FFD700",
   },
