@@ -9,30 +9,31 @@ const BJJ_PHOTO = asset("/imagens/jiu-jitsu/turma_bruno.jpeg");
 const BOXING_PHOTO = asset("/imagens/cromado/cromado_1.jpg");
 const BRUNO_PHOTO = asset("/imagens/bruno/bruno_1.jpg");
 
-const athletePhotos = Array.from({ length: 15 }, (_, i) =>
-  asset(`/imagens/atletas/atleta_${String(i + 1).padStart(2, "0")}.jpeg`)
+const ATHLETE_ORDER = [1, 2, 3, 4, 13, 14, 15, 5, 6, 7, 8, 9, 10, 11, 12];
+const athletePhotos = ATHLETE_ORDER.map((n) =>
+  asset(`/imagens/atletas/atleta_${String(n).padStart(2, "0")}.jpeg`)
 );
 
 const academiaFeatures = [
   {
     icon: Wind,
     title: "Espaço amplo e arejado",
-    desc: "Tatame extenso, ventilação cruzada e iluminação que aguenta as turmas mais cheias sem perder conforto.",
+    desc: "Tatame extenso, ventilado e bem iluminado, mesmo com as turmas mais cheias, sem perder conforto.",
   },
   {
     icon: Dumbbell,
     title: "Equipamentos de primeira linha",
-    desc: "Sacos pesados, manequins, focos, luvas, peso livre e área de wrestling — tudo o que precisa pra treinar como atleta profissional.",
+    desc: "Sacos pesados, focos, manoplas, luvas de boxe, ataduras, cordas, halteres, anilhas e peso livre — tudo o que você precisa pra treinar como atleta profissional.",
   },
   {
     icon: Bath,
-    title: "2 banheiros e estrutura completa",
-    desc: "Vestiários separados, dois banheiros e área de descanso para o aluno cuidar do pós-treino com calma.",
+    title: "Estrutura completa: cantina, vestiários e descanso",
+    desc: "Cantina dentro da academia, dois vestiários (masculino e feminino) com banheiro integrado e área de descanso — você se hidrata, come algo e cuida do pós-treino sem sair do espaço.",
   },
   {
     icon: GraduationCap,
     title: "Professores que competem",
-    desc: "Todos os coaches da RFT são atletas reais, com cartel ativo e didática refinada — você aprende com quem ainda sobe pra lutar.",
+    desc: "A maioria dos coaches da RFT são atletas reais, com cartel ativo e didática refinada — você aprende com quem ainda sobe pra lutar.",
   },
 ];
 
@@ -492,7 +493,7 @@ export default function ProfessoresSection() {
                 <span style={{ color: "#FFD700", textShadow: "0 0 20px rgba(250,204,21,0.4)" }}>
                   ACOMPANHA
                 </span>{" "}
-                A AMBIÇÃO DO ALUNO
+                A VONTADE DO ALUNO
               </h4>
               <p className="text-white/60 text-base leading-relaxed max-w-3xl">
                 A Renovação Fight Team foi montada pra durar treino pesado: tatame amplo, equipamentos completos

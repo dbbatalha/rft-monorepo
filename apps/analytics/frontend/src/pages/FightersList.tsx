@@ -90,7 +90,7 @@ export default function FightersList() {
   const [filterGender, setFilterGender]     = useState<string>("all");
 
   const { data: fighters = [], isLoading } = staticTrpc.fighters.listAlpha.useQuery();
-  const { data: top10NamesArr = [] }       = trpc.fighters.top10Names.useQuery();
+  const { data: top10NamesArr = [] }       = staticTrpc.fighters.top10Names.useQuery();
   const top10Set = useMemo(() => new Set(top10NamesArr), [top10NamesArr]);
 
   // Org list derived from data (sorted, no "all")

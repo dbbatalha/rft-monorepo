@@ -191,7 +191,7 @@ export default function Analytics() {
   const [predResult, setPredResult] = useState<PredictionResult | null>(null);
 
   const { data: allFighters = [] } = staticTrpc.fighters.listAlpha.useQuery();
-  const { data: top10NamesArr = [] } = trpc.fighters.top10Names.useQuery();
+  const { data: top10NamesArr = [] } = staticTrpc.fighters.top10Names.useQuery();
   const top10Set = useMemo(() => new Set(top10NamesArr), [top10NamesArr]);
 
   const { data: fighter1Data } = staticTrpc.fighters.getById.useQuery(
