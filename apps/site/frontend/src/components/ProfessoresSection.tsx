@@ -496,7 +496,7 @@ export default function ProfessoresSection() {
                 A VONTADE DO ALUNO
               </h4>
               <p className="text-white/60 text-base leading-relaxed max-w-3xl">
-                A Renovação Fight Team foi montada pra durar treino pesado: tatame amplo, equipamentos completos
+                A Renovação Fight Team foi montada para treinos pesados: tatame amplo, equipamentos completos
                 e professores que ainda sobem pra lutar. Aqui você não treina <em>como</em> atleta — você treina
                 <em> ao lado</em> deles. Do iniciante ao profissional, todo aluno encontra ambiente, técnica e
                 estrutura no mesmo nível dos times que disputam UFC, LFA e Centurion.
