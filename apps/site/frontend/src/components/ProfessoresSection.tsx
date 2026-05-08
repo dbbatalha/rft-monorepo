@@ -42,7 +42,7 @@ const headCoaches = [
     nome: "Prof. Márcio Cromado",
     titulo: "Head Coach de MMA & Luta Livre / NO GI",
     descricao:
-      "Referência nacional no MMA, Márcio Cromado é o principal coach da RFT. Com vasta experiência em competições de alto nível, formou campeões e guia atletas profissionais rumo ao topo.",
+      "Referência internacional no MMA, Márcio Cromado é o principal coach da RFT. Com vasta experiência em competições de alto nível, formou campeões e guia atletas profissionais rumo ao topo.",
     conquistas: ["Head Coach MMA", "Luta Livre / NO GI Expert", "Formador de Campeões"],
     cor: "#FFD700",
     foto: BOXING_PHOTO,
