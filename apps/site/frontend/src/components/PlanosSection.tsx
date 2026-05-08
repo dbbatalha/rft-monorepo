@@ -424,7 +424,7 @@ export default function PlanosSection() {
             </div>
             <div className="flex-1">
               <div className="text-yellow-400 font-heading text-xs uppercase tracking-[0.3em] mb-2">
-                Não achou um horário que cabe?
+                Não achou horário?
               </div>
               <h3 className="font-display text-2xl md:text-3xl text-white tracking-wider mb-2">
                 AULAS PARTICULARES
@@ -432,9 +432,8 @@ export default function PlanosSection() {
               <p className="text-white/60 text-sm leading-relaxed">
                 Caso nenhum dos horários da grade funcione para você, oferecemos
                 <span className="text-yellow-400"> aulas particulares</span> com qualquer um dos professores
-                — a combinação de horário, frequência e valor é feita diretamente entre você, o professor e a
-                academia. Ideal para atletas em preparação, alunos com agenda apertada ou quem busca atenção
-                individualizada.
+                — mas dependerá da disponibilidade dele e de tatame vago. Ideal para atletas em preparação,
+                alunos com agenda apertada ou quem busca atenção individualizada.
               </p>
             </div>
             <a
