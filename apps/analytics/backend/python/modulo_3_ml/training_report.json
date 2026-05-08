@@ -1,0 +1,29 @@
+{
+  "n_train": 5951,
+  "n_test": 1488,
+  "n_features": 53,
+  "target_balance_red_wins": 0.6554644441457185,
+  "cv_auc_mean": 0.8102100764802586,
+  "cv_auc_std": 0.013025993616648414,
+  "test_accuracy": 0.7567204301075269,
+  "test_auc": 0.8226790623281851,
+  "test_log_loss": 0.47973504175263193,
+  "test_brier": 0.16129726906074426,
+  "feature_importances": {
+    "b_reach": 0.0733664408326149,
+    "b_age": 0.047085702419281006,
+    "losses_total_diff": 0.04508402198553085,
+    "wins_total_diff": 0.040011558681726456,
+    "b_SLpM_total": 0.03570215404033661,
+    "SLpM_total_diff": 0.027970051392912865,
+    "b_losses_total": 0.027606435120105743,
+    "r_wins_total": 0.02483586221933365,
+    "SApM_total_diff": 0.02399921603500843,
+    "b_wins_total": 0.02231551893055439,
+    "r_losses_total": 0.0210406631231308,
+    "td_def_total_diff": 0.02040260098874569,
+    "r_SApM_total": 0.020080693066120148,
+    "r_age": 0.0194085706025362,
+    "age_diff": 0.019038839265704155
+  }
+}

@@ -1,0 +1,54 @@
+# ── Node / build outputs ────────────────────────────────────────────
+node_modules/
+**/node_modules/
+dist/
+**/dist/
+.next/
+.turbo/
+.vite/
+coverage/
+
+# ── ENV (NUNCA commitar credenciais) ────────────────────────────────
+.env
+.env.*
+!.env.example
+
+# ── Logs e PIDs do dev (start.sh / stop.sh) ─────────────────────────
+.logs/
+.pids/
+*.log
+.rft_*.pid
+.rft_*.log
+
+# ── Editores / SO ───────────────────────────────────────────────────
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# ── Python / ETL ────────────────────────────────────────────────────
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+**/etl_weekly/logs/
+**/python/.venv/
+
+# ── Backups antigos (não devem ser commitados) ──────────────────────
+rft_academy/
+_wp_old/
+_wp_legacy/
+_backup_*/
+**/*.bak
+
+# ── Drizzle cache ───────────────────────────────────────────────────
+**/drizzle/.cache/
+**/drizzle/migrations/.lock
+
+# ── Misc ────────────────────────────────────────────────────────────
+*.zip
+!apps/analytics/backend/python/modulo_3_ml/*.onnx
+!apps/analytics/backend/python/modulo_3_ml/*.pkl

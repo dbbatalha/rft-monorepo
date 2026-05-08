@@ -1,0 +1,96 @@
+#!/usr/bin/env bash
+# ─────────────────────────────────────────────────────────────────────────────
+# ETL Semanal — pipeline completo de atualização do banco mma_analytics.
+#
+# Roda toda terça às 4h da madrugada (configurar no crontab):
+#   0 4 * * 2  /caminho/para/run_weekly.sh
+#
+# Ordem dos passos:
+#   1. Scrape eventos UFC concluídos na última semana
+#   2. Scrape rankings oficiais UFC
+#   3. Scrape próximos eventos
+#   4. Identifica novos atletas que apareceram nas lutas mas não estão no DB
+#   5. Para cada novo: scrape profile + histórico completo
+#   6. Recompute stats agregadas (winRate, finishRate, etc.)
+#   7. Validation — garante consistência. Se falhar, falha o pipeline.
+#   8. Opcional: re-treina o modelo XGBoost se ≥50 lutas novas
+#
+# Cada passo grava log em ~/etl_logs/weekly_<DATE>/<step>.log
+# ─────────────────────────────────────────────────────────────────────────────
+
+set -euo pipefail
+
+# ── Configuração ─────────────────────────────────────────────────────────────
+SCRAPER_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+ML_DIR="$(cd "$SCRAPER_DIR/../modulo_3_ml" && pwd)"
+DATE=$(date +%Y%m%d_%H%M%S)
+LOG_DIR="$HOME/etl_logs/weekly_$DATE"
+mkdir -p "$LOG_DIR"
+SUMMARY="$LOG_DIR/summary.txt"
+RETRAIN_THRESHOLD="${RETRAIN_THRESHOLD:-50}"
+
+cd "$SCRAPER_DIR"
+
+log()  { echo "[$(date '+%H:%M:%S')] $1" | tee -a "$SUMMARY"; }
+fail() { log "✘ FAIL: $1"; exit 1; }
+
+log "=== ETL semanal iniciado ($DATE) ==="
+log "logs em $LOG_DIR"
+
+# Snapshot do contador antes de iniciar (para detectar novas lutas no fim)
+FIGHTS_BEFORE=$(docker exec mma_dashboard_mysql mysql -u mma_user -pmma_password mma_analytics -sN -e "SELECT COUNT(*) FROM fights" 2>/dev/null || echo 0)
+log "fights no banco antes: $FIGHTS_BEFORE"
+
+# ── 1. Eventos UFC concluídos ───────────────────────────────────────────────
+log "[1/8] Scrape eventos UFC concluídos…"
+python3 scrape_weekly_events.py > "$LOG_DIR/01_weekly_events.log" 2>&1 \
+  || fail "scrape_weekly_events.py"
+
+# ── 2. Rankings oficiais ────────────────────────────────────────────────────
+log "[2/8] Scrape rankings oficiais UFC…"
+python3 scrape_official_rankings.py > "$LOG_DIR/02_rankings.log" 2>&1 \
+  || fail "scrape_official_rankings.py"
+
+# ── 3. Próximos eventos ─────────────────────────────────────────────────────
+log "[3/8] Scrape próximos eventos UFC…"
+python3 scrape_upcoming_events.py > "$LOG_DIR/03_upcoming.log" 2>&1 \
+  || fail "scrape_upcoming_events.py"
+
+# ── 4 + 5. Atletas novos do Top 15 (idempotente) ────────────────────────────
+log "[4-5/8] Scrape Top 15 UFC + atletas novos…"
+python3 scrape_top10_ufc.py > "$LOG_DIR/04_05_top15.log" 2>&1 \
+  || fail "scrape_top10_ufc.py"
+
+# ── 6. Recompute aggregate stats ────────────────────────────────────────────
+log "[6/8] Recompute stats agregadas…"
+python3 recompute_fighter_stats.py > "$LOG_DIR/06_recompute.log" 2>&1 \
+  || fail "recompute_fighter_stats.py"
+
+# ── 7. Validação final ──────────────────────────────────────────────────────
+log "[7/8] Validation…"
+python3 validate_db.py > "$LOG_DIR/07_validate.log" 2>&1 \
+  || fail "validate_db.py — banco em estado inconsistente"
+
+# ── 8. Re-treino opcional do modelo ─────────────────────────────────────────
+FIGHTS_AFTER=$(docker exec mma_dashboard_mysql mysql -u mma_user -pmma_password mma_analytics -sN -e "SELECT COUNT(*) FROM fights" 2>/dev/null || echo 0)
+NEW_FIGHTS=$((FIGHTS_AFTER - FIGHTS_BEFORE))
+log "fights inseridas neste run: $NEW_FIGHTS (limiar para retrain: $RETRAIN_THRESHOLD)"
+
+if [ "$NEW_FIGHTS" -ge "$RETRAIN_THRESHOLD" ]; then
+  log "[8/8] Re-treino do XGBoost…"
+  cd "$ML_DIR"
+  python3 train_predictor.py > "$LOG_DIR/08_train.log" 2>&1 \
+    || fail "train_predictor.py"
+  python3 convert_to_onnx.py >> "$LOG_DIR/08_train.log" 2>&1 \
+    || fail "convert_to_onnx.py"
+  log "✓ modelo retreinado e exportado"
+else
+  log "[8/8] Skip retrain (poucas lutas novas)"
+fi
+
+log "=== ETL semanal concluído com sucesso ==="
+log "Resumo:"
+log "  fights antes: $FIGHTS_BEFORE"
+log "  fights depois: $FIGHTS_AFTER"
+log "  delta: +$NEW_FIGHTS"
+log "  log dir: $LOG_DIR"

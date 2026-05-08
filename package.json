@@ -1,0 +1,25 @@
+{
+  "name": "rft-monorepo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "RFT — Renovação Fight Team. Monorepo: site institucional + plataforma de scouting.",
+  "scripts": {
+    "dev:site":           "pnpm --filter @rft/site-frontend dev",
+    "dev:analytics:fe":   "pnpm --filter @rft/analytics-frontend dev",
+    "dev:analytics:be":   "pnpm --filter @rft/analytics-backend dev",
+    "dev":                "concurrently -n site,analyt-fe,analyt-be -c blue,magenta,yellow \"pnpm dev:site\" \"pnpm dev:analytics:fe\" \"pnpm dev:analytics:be\"",
+    "build":              "pnpm -r build",
+    "build:site":         "pnpm --filter @rft/site-frontend build",
+    "build:analytics":    "pnpm --filter @rft/analytics-frontend build && pnpm --filter @rft/analytics-backend build",
+    "typecheck":          "pnpm -r typecheck",
+    "lint":               "pnpm -r lint --if-present",
+    "clean":              "pnpm -r exec rm -rf node_modules dist .next .turbo && rm -rf node_modules"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.0"
+  },
+  "packageManager": "pnpm@9.0.0",
+  "engines": {
+    "node": ">=20"
+  }
+}

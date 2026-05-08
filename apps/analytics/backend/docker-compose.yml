@@ -1,0 +1,42 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: mma_analytics_db
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password_change_me
+      MYSQL_DATABASE: mma_analytics
+      MYSQL_USER: mma_user
+      MYSQL_PASSWORD: mma_password_change_me
+      MYSQL_INITDB_SKIP_TZINFO: 1
+    ports:
+      - "3306:3306"
+    volumes:
+      - ../../../../sistema/docker-data/scouting/mysql-scraper:/var/lib/mysql
+      - ./init_db.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - mma_network
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      timeout: 20s
+      retries: 10
+      interval: 10s
+
+  phpmyadmin:
+    image: phpmyadmin:latest
+    container_name: mma_analytics_phpmyadmin
+    environment:
+      PMA_HOST: mysql
+      PMA_USER: mma_user
+      PMA_PASSWORD: mma_password_change_me
+    ports:
+      - "8080:80"
+    depends_on:
+      - mysql
+    networks:
+      - mma_network
+
+networks:
+  mma_network:
+    driver: bridge
