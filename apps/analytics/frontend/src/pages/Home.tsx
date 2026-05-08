@@ -9,6 +9,7 @@ import {
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@rft/shared/ui/dialog";
 import { RftDiamond, RftCard, RftButton } from "@rft/shared/RftIcon";
 import { FighterAvatarDiamond } from "@rft/shared/FighterAvatarDiamond";
+import { asset } from "@/lib/url";
 
 export default function Home() {
   const [, setLocation] = useLocation();
@@ -131,7 +132,7 @@ export default function Home() {
         <div className="relative">
           <div className="flex items-start justify-between gap-4 flex-wrap">
             <div className="flex items-start gap-4">
-              <img src="/imagens/rft-losango.png" alt="RFT" className="w-14 h-14 object-contain shrink-0" />
+              <img src={asset("/imagens/rft-losango.png")} alt="RFT" className="w-14 h-14 object-contain shrink-0" />
               <div>
                 <div className="flex items-center gap-2 mb-3">
                   <div className="h-px w-8 bg-yellow-400" />

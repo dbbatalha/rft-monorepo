@@ -11,6 +11,7 @@ import { getFlagEmoji, getFlagEmojiOrFallback } from "@rft/shared/flagEmoji";
 import { FighterAvatarDiamond } from "@rft/shared/FighterAvatarDiamond";
 import { isRftAthlete } from "@rft/shared/rftAthletes";
 import { translateWeightClass, weightClassTooltip } from "@rft/shared/weightClasses";
+import { asset } from "@/lib/url";
 
 const ORG_SHORT: Record<string, string> = {
   "UFC": "UFC",
@@ -364,7 +365,7 @@ export default function FightersList() {
                       </p>
                       {isRftAthlete(fighter.name) && (
                         <img
-                          src="/imagens/rft-losango.png"
+                          src={asset("/imagens/rft-losango.png")}
                           alt="Atleta RFT"
                           title="Atleta RFT"
                           className="w-4 h-4 object-contain shrink-0"

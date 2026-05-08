@@ -17,6 +17,7 @@ import {
 } from "lucide-react";
 import { CSSProperties, useEffect, useRef, useState } from "react";
 import { useLocation } from "wouter";
+import { asset } from "@/lib/url";
 
 // Paths são internos ao Router (base="/" no App.tsx) — sem o prefixo /analytics.
 const menuItems = [
@@ -111,14 +112,14 @@ function DashboardLayoutContent({ children, setSidebarWidth }: DashboardLayoutCo
                 aria-label="Toggle navigation"
               >
                 {isCollapsed
-                  ? <img src="/imagens/rft-losango.png" alt="RFT" className="w-7 h-7 object-contain" />
+                  ? <img src={asset("/imagens/rft-losango.png")} alt="RFT" className="w-7 h-7 object-contain" />
                   : <PanelLeft className="h-4 w-4 text-muted-foreground" />
                 }
               </button>
 
               {!isCollapsed && (
                 <div className="flex items-center gap-2 min-w-0">
-                  <img src="/imagens/rft-losango.png" alt="RFT" className="w-8 h-8 object-contain shrink-0" />
+                  <img src={asset("/imagens/rft-losango.png")} alt="RFT" className="w-8 h-8 object-contain shrink-0" />
                   <div className="min-w-0">
                     <p className="font-display tracking-wider text-sm text-yellow-400 leading-tight">MMA ANALYTICS</p>
                     <p className="text-[10px] text-white/50 uppercase tracking-[0.25em]">by RFT</p>
@@ -178,7 +179,7 @@ function DashboardLayoutContent({ children, setSidebarWidth }: DashboardLayoutCo
           <div className="flex border-b border-border h-13 items-center justify-between bg-background/95 px-3 backdrop-blur supports-[backdrop-filter]:backdrop-blur sticky top-0 z-40">
             <div className="flex items-center gap-2">
               <SidebarTrigger className="h-8 w-8 rounded-lg" />
-              <img src="/imagens/rft-losango.png" alt="RFT" className="w-7 h-7 object-contain" />
+              <img src={asset("/imagens/rft-losango.png")} alt="RFT" className="w-7 h-7 object-contain" />
               <span className="text-sm font-display tracking-wider text-yellow-400">
                 {activeMenuItem?.label ?? "MMA ANALYTICS"}
               </span>
