@@ -23,7 +23,7 @@ const academiaFeatures = [
   {
     icon: Dumbbell,
     title: "Equipamentos de primeira linha",
-    desc: "Sacos pesados, focos, manoplas, luvas de boxe, ataduras, cordas, halteres, anilhas e peso livre — tudo o que você precisa pra treinar como atleta profissional.",
+    desc: "Sacos pesados, manoplas, luvas de boxe, ataduras, cordas, halteres, anilhas e peso livre — tudo o que você precisa pra treinar como atleta profissional.",
   },
   {
     icon: Bath,
