@@ -1,47 +1,48 @@
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import { useRef, useState } from "react";
 import { X, ChevronLeft, ChevronRight, ZoomIn } from "lucide-react";
+import { asset } from "@/lib/url";
 
 const fotos = [
   {
-    src: "/imagens/mma/47a9e710-44c1-11f1-93cd-1bbb4d4c542c.jpg",
+    src: asset("/imagens/mma/47a9e710-44c1-11f1-93cd-1bbb4d4c542c.jpg"),
     alt: "Equipe RFT - Treino Completo",
     categoria: "Equipe",
   },
   {
-    src: "/imagens/mma/mma_0.jpeg",
+    src: asset("/imagens/mma/mma_0.jpeg"),
     alt: "Treino de MMA na RFT",
     categoria: "MMA",
   },
   {
-    src: "/imagens/luta-livre/turma_lle.jpeg",
+    src: asset("/imagens/luta-livre/turma_lle.jpeg"),
     alt: "Turma de Luta Livre — Prof. Márcio Cromado",
     categoria: "Luta Livre",
   },
   {
-    src: "/imagens/jiu-jitsu/turma_bruno.jpeg",
+    src: asset("/imagens/jiu-jitsu/turma_bruno.jpeg"),
     alt: "Turma de Jiu-Jitsu — Prof. Bruno Grillu",
     categoria: "Jiu-Jitsu",
   },
   {
-    src: "/imagens/jiu-jitsu/turma_diego.jpeg",
+    src: asset("/imagens/jiu-jitsu/turma_diego.jpeg"),
     alt: "Turma de Jiu-Jitsu — Prof. Diego Batalha",
     categoria: "Jiu-Jitsu",
     objectPosition: "center 60%",
   },
   {
-    src: "/imagens/jiu-jitsu/turma_bruno_diego.jpeg",
+    src: asset("/imagens/jiu-jitsu/turma_bruno_diego.jpeg"),
     alt: "Turma de Jiu-Jitsu — Bruno e Diego",
     categoria: "Jiu-Jitsu",
     objectPosition: "center 35%",
   },
   {
-    src: "/imagens/boxe/boxe_1.jpg",
+    src: asset("/imagens/boxe/boxe_1.jpg"),
     alt: "Turma de Boxe na RFT",
     categoria: "Boxe",
   },
   {
-    src: "/imagens/muay-thai/muay_thai_1.jpeg",
+    src: asset("/imagens/muay-thai/muay_thai_1.jpeg"),
     alt: "Turma de Muay Thai na RFT",
     categoria: "Muay Thai",
   },

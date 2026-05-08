@@ -2,14 +2,15 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Award, Star, Shield, Trophy, Instagram, Twitter, ChevronLeft, ChevronRight, Bath, Wind, Dumbbell, GraduationCap } from "lucide-react";
 import { rftAthleteLink, RFT_SOCIALS } from "@rft/shared/rftAthletes";
+import { asset } from "@/lib/url";
 
-const TEAM_PHOTO_1 = "/imagens/luta-livre/turma_lle.jpeg";
-const BJJ_PHOTO = "/imagens/jiu-jitsu/turma_bruno.jpeg";
-const BOXING_PHOTO = "/imagens/cromado/cromado_1.jpg";
-const BRUNO_PHOTO = "/imagens/bruno/bruno_1.jpg";
+const TEAM_PHOTO_1 = asset("/imagens/luta-livre/turma_lle.jpeg");
+const BJJ_PHOTO = asset("/imagens/jiu-jitsu/turma_bruno.jpeg");
+const BOXING_PHOTO = asset("/imagens/cromado/cromado_1.jpg");
+const BRUNO_PHOTO = asset("/imagens/bruno/bruno_1.jpg");
 
 const athletePhotos = Array.from({ length: 15 }, (_, i) =>
-  `/imagens/atletas/atleta_${String(i + 1).padStart(2, "0")}.jpeg`
+  asset(`/imagens/atletas/atleta_${String(i + 1).padStart(2, "0")}.jpeg`)
 );
 
 const academiaFeatures = [

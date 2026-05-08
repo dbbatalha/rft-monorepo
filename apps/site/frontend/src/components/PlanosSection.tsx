@@ -1,6 +1,7 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Crown, Percent, MessageCircle, Package, Layers } from "lucide-react";
+import { asset } from "@/lib/url";
 
 const WHATSAPP_NUMBER = "5521975371903";
 
@@ -271,7 +272,7 @@ export default function PlanosSection() {
                 >
                   <div className="flex items-center gap-3 mb-4">
                     <img
-                      src="/imagens/rft-losango.png"
+                      src={asset("/imagens/rft-losango.png")}
                       alt="RFT"
                       className="w-12 h-12 object-contain shrink-0"
                     />

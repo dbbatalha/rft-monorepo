@@ -1,4 +1,5 @@
 import { MapPin, Phone, Instagram, MessageCircle } from "lucide-react";
+import { asset } from "@/lib/url";
 
 const modalidades = ["MMA Profissional", "Luta Livre", "Muay Thai / Kickboxing", "Boxe", "Jiu-Jitsu", "Jiu-Jitsu Kids"];
 
@@ -14,7 +15,7 @@ export default function Footer() {
           {/* Brand */}
           <div className="lg:col-span-1">
             <div className="flex items-center gap-3 mb-4">
-              <img src="/imagens/rft-losango.png" alt="RFT" className="w-12 h-12 object-contain" />
+              <img src={asset("/imagens/rft-losango.png")} alt="RFT" className="w-12 h-12 object-contain" />
               <div>
                 <div className="text-yellow-400 font-display text-xl leading-none tracking-wider">RENOVAÇÃO</div>
                 <div className="text-white/50 text-xs tracking-[0.3em] uppercase">Fight Team</div>

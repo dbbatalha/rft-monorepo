@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import { asset } from "@/lib/url";
 
 const navLinks = [
   { label: "Modalidades", href: "#modalidades" },
@@ -48,7 +49,7 @@ export default function Navbar() {
           >
             <div className="relative">
               <img
-                src="/imagens/rft-losango.png"
+                src={asset("/imagens/rft-losango.png")}
                 alt="RFT"
                 className="w-10 h-10 md:w-12 md:h-12 object-contain group-hover:drop-shadow-[0_0_12px_rgba(250,204,21,0.6)] transition-all duration-300"
               />

@@ -1,7 +1,8 @@
 import { motion } from "framer-motion";
 import { ChevronDown, Shield, Trophy, Users } from "lucide-react";
+import { asset } from "@/lib/url";
 
-const TEAM_PHOTO = "/imagens/mma/477c4760-44c1-11f1-93cd-1bbb4d4c542c.jpg";
+const TEAM_PHOTO = asset("/imagens/mma/477c4760-44c1-11f1-93cd-1bbb4d4c542c.jpg");
 
 const stats = [
   { icon: Trophy, value: "LFA", label: "Campeão" },
