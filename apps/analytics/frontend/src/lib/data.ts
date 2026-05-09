@@ -34,6 +34,30 @@ async function fetchJson<T>(path: string): Promise<T> {
   return res.json() as Promise<T>;
 }
 
+// Campos do banco que são TEXT contendo JSON serializado (lista). O ETL
+// exporta como string; aqui decodificamos pra array antes da UI usar.
+const JSON_ARRAY_FIELDS = ["strengths", "weaknesses", "howHeWins", "howHeLoses", "primaryBases"];
+
+function decodeJsonArrayFields<T extends Record<string, any>>(obj: T): T {
+  if (!obj || typeof obj !== "object") return obj;
+  for (const k of JSON_ARRAY_FIELDS) {
+    const v = obj[k];
+    if (typeof v === "string") {
+      try { (obj as any)[k] = JSON.parse(v); } catch { (obj as any)[k] = null; }
+    }
+  }
+  return obj;
+}
+
+async function fetchFighter<T extends Record<string, any>>(path: string): Promise<T> {
+  return decodeJsonArrayFields(await fetchJson<T>(path));
+}
+
+async function fetchFighters<T extends Record<string, any>>(path: string): Promise<T[]> {
+  const list = await fetchJson<T[]>(path);
+  return Array.isArray(list) ? list.map(decodeJsonArrayFields) : list;
+}
+
 // ---------------------------------------------------------------------------
 // Singletons
 // ---------------------------------------------------------------------------
@@ -82,21 +106,21 @@ export const useTop10Names = () =>
 export const useFightersAlpha = () =>
   useQuery<any[]>({
     queryKey: ["data", "fighters"],
-    queryFn: () => fetchJson("/fighters.json"),
+    queryFn: () => fetchFighters("/fighters.json"),
     staleTime: 1000 * 60 * 60,
   });
 
 export const useFightersLight = () =>
   useQuery<any[]>({
     queryKey: ["data", "fighters-light"],
-    queryFn: () => fetchJson("/fighters-light.json"),
+    queryFn: () => fetchFighters("/fighters-light.json"),
     staleTime: 1000 * 60 * 60,
   });
 
 export const useFightersRecent = () =>
   useQuery<any[]>({
     queryKey: ["data", "fighters-recent"],
-    queryFn: () => fetchJson("/fighters-recent.json"),
+    queryFn: () => fetchFighters("/fighters-recent.json"),
     staleTime: 1000 * 60 * 60,
   });
 
@@ -129,7 +153,7 @@ export const useUpcoming = (org: string) =>
 export const useFighter = (id: number | undefined) =>
   useQuery<any>({
     queryKey: ["data", "fighter", id],
-    queryFn: () => fetchJson(`/fighters/${id}.json`),
+    queryFn: () => fetchFighter(`/fighters/${id}.json`),
     enabled: !!id,
     staleTime: 1000 * 60 * 60,
   });
